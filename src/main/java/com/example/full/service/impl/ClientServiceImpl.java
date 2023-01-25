@@ -1,10 +1,13 @@
 package com.example.full.service.impl;
 
 import com.example.full.model.Client;
+import com.example.full.model.Region;
 import com.example.full.repository.ClientRepository;
 import com.example.full.service.ClientService;
-import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +28,12 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
+    public Page<Client> findAll(Pageable pageable) {
+        return clientRepository.findAll(pageable);
+    }
+
+    @Override
+    @Transactional
     public Client findById(Long id) {
         return clientRepository.findById(id).orElse(null);
     }
@@ -39,5 +48,11 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public void delete(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return clientRepository.findAllRegiones();
     }
 }
