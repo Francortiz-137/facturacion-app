@@ -2,8 +2,12 @@ package com.example.full.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -24,7 +28,7 @@ public class AppUser implements Serializable {
     @Column(length = 60)
     private String password;
 
-    private boolean enabled;
+    private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     /*@JoinTable(name = "user_authorities", joinColumns = @JoinColumn(name="user_id"),
