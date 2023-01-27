@@ -28,11 +28,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private AuthenticationManager authenticationManager;
 
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        super.configure(security);
+        security.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
     }
 
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        super.configure(clients);
+        clients.inMemory().withClient("angularap")
+                .secret(passwordEncoder.encode("12345"))
+                .scopes("read","write")
+                .authorizedGrantTypes("password","refresh_token")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
     }
 
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
