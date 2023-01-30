@@ -19,3 +19,14 @@ INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('hasd
 INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('idasdasdsad','9','9@example.com','2023-01-01',1);
 INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('jdsadasdsad','10','10@example.com','2023-01-01',1);
 INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('ksdadasdasd','11','11@example.com','2023-01-01',1);
+
+
+INSERT INTO `usuarios` (username, password, enabled) VALUES ('franco','',1);
+INSERT INTO `usuarios` (username, password, enabled) VALUES ('admin','',1);
+
+INSERT INTO `roles` (nombre) VALUES ('ROLE_USER');
+INSERT INTO `roles` (nombre) VALUES ('ROLE_ADMIN');
+
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (1,1);
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2,2);
+INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2,1);
