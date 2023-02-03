@@ -21,11 +21,11 @@ INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('jdsa
 INSERT INTO client (name, last_name, email, created_at, region_id) VALUES ('ksdadasdasd','11','11@example.com','2023-01-01',1);
 
 
-INSERT INTO `usuarios` (username, password, enabled) VALUES ('franco','',1);
-INSERT INTO `usuarios` (username, password, enabled) VALUES ('admin','',1);
+INSERT INTO `usuarios` (username, password, enabled) VALUES ('franco','$2a$10$pGhVqWBB/sOjuiLqx2eqxOps6Yqyl6UYhvcf.6hAxLX.DGpmslarK',1);
+INSERT INTO `usuarios` (username, password, enabled) VALUES ('admin','$2a$10$L.KGUpBft/QQIfRC.E6BoeC28o91FgimwXUuGVhmAZhZHYs3O/8BO',1);
 
-INSERT INTO `roles` (nombre) VALUES ('ROLE_USER');
-INSERT INTO `roles` (nombre) VALUES ('ROLE_ADMIN');
+INSERT INTO `roles` (name) VALUES ('ROLE_USER');
+INSERT INTO `roles` (name) VALUES ('ROLE_ADMIN');
 
 INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (1,1);
 INSERT INTO `usuarios_roles` (usuario_id, role_id) VALUES (2,2);

@@ -1,5 +1,7 @@
 package com.example.full;
 
+import com.example.full.service.ClientService;
+import com.example.full.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +18,12 @@ public class FullApplication implements CommandLineRunner {
 		SpringApplication.run(FullApplication.class, args);
 	}
 
+	@Autowired
+	private ClientService clientService;
+
+	@Autowired
+	private IUserService userService;
+
 	@Override
 	public void run(String... args) throws Exception {
 		String password = "12345";
@@ -24,5 +32,8 @@ public class FullApplication implements CommandLineRunner {
 			String passwordBcrypt = passwordEncoder.encode(password);
 			System.out.println(passwordBcrypt);
 		}
+
+
+
 	}
 }

@@ -4,7 +4,6 @@ import com.example.full.model.Client;
 import com.example.full.model.Region;
 import com.example.full.service.ClientService;
 import com.example.full.service.IUploadFileService;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Instant;
@@ -53,6 +54,7 @@ public class ClientController {
     }
 
 
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/{id}")
     public ResponseEntity<?> readClient(@PathVariable Long id){
         Client client = null;
@@ -73,6 +75,7 @@ public class ClientController {
         return new ResponseEntity<Client>(client, HttpStatus.OK);
     }
 
+    @Secured({"ROLE_ADMIN"})
     @PostMapping("")
     public ResponseEntity<?> create(@Valid @RequestBody Client client, BindingResult result){
         Client newClient = null;
@@ -100,7 +103,7 @@ public class ClientController {
         response.put("cliente",newClient);
         return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
     }
-
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Map<String,Object> response = new HashMap<>();
@@ -118,7 +121,7 @@ public class ClientController {
         response.put("mensaje", "el cliente ha sido eliminado con exito");
         return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
     }
-
+    @Secured({"ROLE_ADMIN"})
     @PutMapping("{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Client client, BindingResult result ,@PathVariable Long id){
         Client currentClient = clientService.findById(id);
@@ -154,6 +157,7 @@ public class ClientController {
         return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
     }
 
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @PostMapping("/upload")
     public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile file, @RequestParam("id") Long id){
 
@@ -203,7 +207,7 @@ public class ClientController {
 
         return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
     }
-
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/regiones")
     public List<Region> listRegions(){
         return  clientService.findAllRegiones();

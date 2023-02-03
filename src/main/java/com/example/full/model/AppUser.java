@@ -1,6 +1,6 @@
 package com.example.full.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,13 +28,11 @@ public class AppUser implements Serializable {
     @Column(length = 60)
     private String password;
 
+
+
     private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    /*@JoinTable(name = "user_authorities", joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"),
-    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
-     */
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name="usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"),
             uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id","role_id"})})
