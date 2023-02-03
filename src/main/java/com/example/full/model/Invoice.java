@@ -39,5 +39,12 @@ public class Invoice implements Serializable {
         this.createdAt = new Date();
     }
 
+    public Double getTotal(){
+        Double total = 0.0;
+        for (ItemInvoice item: items){
+            total += item.getSubTotal();
+        }
+        return 0.0;
+    }
 
 }

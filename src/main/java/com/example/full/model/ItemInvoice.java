@@ -19,9 +19,12 @@ public class ItemInvoice implements Serializable {
     @Column(name = "cantidad")
     private Integer amount;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id")
+    private Product product;
 
-    public Double calcularImporte(){
-        return amount.doubleValue();
+    public Double getSubTotal(){
+        return amount.doubleValue() * product.getPrice();
     }
 
 }

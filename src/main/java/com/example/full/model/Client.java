@@ -43,6 +43,5 @@ public class Client {
     private Region region;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
-    @JoinColumn
     private List<Invoice> invoices;
 }
