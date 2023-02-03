@@ -42,6 +42,7 @@ public class Client {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Region region;
 
+    @JsonIgnoreProperties({"client","hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
     private List<Invoice> invoices;
 }

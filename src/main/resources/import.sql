@@ -40,13 +40,13 @@ INSERT INTO productos (name, price, created_at) VALUES ('Bianchi Bicicleta Aro 2
 INSERT INTO productos (name, price, created_at) VALUES ('Mica comoda 5 Cajones', 299990, NOW());
 
 
-INSERT INTO facturas (description, observation, client_id, created_at) VALUES ('Factura equipos de oficina', null, 1, NOW());
-INSERT INTO facturas_items (amount, factura_id, product_id) VALUES (1, 1, 1);
-INSERT INTO facturas_items (amount, factura_id, product_id) VALUES (2, 1, 4);
-INSERT INTO facturas_items (amount, factura_id, product_id) VALUES (1, 1, 5);
-INSERT INTO facturas_items (amount, factura_id, product_id) VALUES (1, 1, 7);
+INSERT INTO facturas (descripcion, observacion, cliente_id, created_at) VALUES ('Factura equipos de oficina', null, 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 1, 1);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2, 1, 4);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 1, 5);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 1, 7);
 
-INSERT INTO facturas (description, observation, client_id, created_at) VALUES ('Factura Bicicleta', 'Alguna nota', 1, NOW());
-INSERT INTO facturas_items (amount, factura_id, product_id) VALUES (3, 2, 6);
+INSERT INTO facturas (descripcion, observacion, cliente_id, created_at) VALUES ('Factura Bicicleta', 'Alguna nota', 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (3, 2, 6);
 
 

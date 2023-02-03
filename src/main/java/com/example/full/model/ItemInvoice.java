@@ -1,7 +1,9 @@
 package com.example.full.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +12,7 @@ import java.io.Serializable;
 @Data
 @Table(name = "facturas_items")
 @AllArgsConstructor
+@NoArgsConstructor
 public class ItemInvoice implements Serializable {
 
     @Id
@@ -19,6 +22,7 @@ public class ItemInvoice implements Serializable {
     @Column(name = "cantidad")
     private Integer amount;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "producto_id")
     private Product product;
