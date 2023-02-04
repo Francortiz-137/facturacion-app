@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200"})
 @RequestMapping("/api")
 public class InvoiceController {
 
@@ -18,5 +18,11 @@ public class InvoiceController {
     @GetMapping("/facturas/{id}")
     public ResponseEntity<?> show(@PathVariable Long id){
         return new ResponseEntity<Invoice>( clientService.findInvoiceById(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/facturas/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        clientService.deleteInvoiceById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
