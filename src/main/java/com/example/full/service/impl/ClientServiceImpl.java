@@ -1,8 +1,10 @@
 package com.example.full.service.impl;
 
 import com.example.full.model.Client;
+import com.example.full.model.Invoice;
 import com.example.full.model.Region;
 import com.example.full.repository.ClientRepository;
+import com.example.full.repository.IInvoiceRepository;
 import com.example.full.service.ClientService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,8 +18,11 @@ public class ClientServiceImpl implements ClientService {
 
     private static ClientRepository clientRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository) {
+    private static IInvoiceRepository invoiceRepository;
+
+    public ClientServiceImpl(ClientRepository clientRepository, IInvoiceRepository invoiceRepository) {
         this.clientRepository = clientRepository;
+        this.invoiceRepository = invoiceRepository;
     }
 
     @Override
@@ -54,5 +59,20 @@ public class ClientServiceImpl implements ClientService {
     @Transactional(readOnly = true)
     public List<Region> findAllRegiones() {
         return clientRepository.findAllRegiones();
+    }
+
+    @Override
+    public Invoice findInvoiceById(Long id) {
+        return invoiceRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Invoice saveInvoice(Invoice invoice) {
+        return invoiceRepository.save(invoice);
+    }
+
+    @Override
+    public void deleteInvoiceById(Long id) {
+        invoiceRepository.deleteById(id);
     }
 }

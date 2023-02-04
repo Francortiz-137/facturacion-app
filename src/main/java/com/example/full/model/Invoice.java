@@ -51,7 +51,7 @@ public class Invoice implements Serializable {
         for (ItemInvoice item: items){
             total += item.getSubTotal();
         }
-        return 0.0;
+        return total;
     }
 
 }
