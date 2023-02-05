@@ -25,4 +25,10 @@ public class InvoiceController {
         clientService.deleteInvoiceById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("facturas/filtrar-productos/{term}")
+    public ResponseEntity<?> filterProducts(@PathVariable String term){
+
+        return new ResponseEntity<>(clientService.findProductByName(term),HttpStatus.OK);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.full.service;
 
 import com.example.full.model.Client;
 import com.example.full.model.Invoice;
+import com.example.full.model.Product;
 import com.example.full.model.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,4 +27,6 @@ public interface ClientService {
     public Invoice saveInvoice(Invoice invoice);
 
     public void deleteInvoiceById(Long id);
+
+    public List<Product> findProductByName(String term);
 }

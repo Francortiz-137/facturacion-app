@@ -22,7 +22,7 @@ public class Invoice implements Serializable {
     private Long id;
 
     @Column(name = "descripcion")
-    private String itemDescription;
+    private String description;
 
     @Column(name = "observacion")
     private String observation;
