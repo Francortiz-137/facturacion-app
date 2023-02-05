@@ -54,7 +54,7 @@ public class ClientController {
     }
 
 
-    //@Secured({"ROLE_ADMIN","ROLE_USER"})
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/{id}")
     public ResponseEntity<?> readClient(@PathVariable Long id){
         Client client = null;
