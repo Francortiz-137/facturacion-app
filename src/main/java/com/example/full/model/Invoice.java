@@ -31,7 +31,7 @@ public class Invoice implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    @JsonIgnoreProperties({"invoices","hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties(value={"invoices","hibernateLazyInitializer", "handler"},allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="cliente_id")
     private Client client;
