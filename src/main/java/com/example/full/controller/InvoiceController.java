@@ -31,4 +31,9 @@ public class InvoiceController {
 
         return new ResponseEntity<>(clientService.findProductByName(term),HttpStatus.OK);
     }
+
+    @PostMapping("/facturas")
+    public ResponseEntity<?> create(@RequestBody Invoice invoice){
+        return new ResponseEntity<>(clientService.saveInvoice(invoice),HttpStatus.CREATED);
+    }
 }
