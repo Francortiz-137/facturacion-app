@@ -30,10 +30,9 @@ public class UploadServiceImpl implements IUploadFileService {
         Resource resource = new UrlResource(filePath.toUri());
         log.info(filePath.toString());
 
-
         if (!resource.exists() && !resource.isReadable()){
-            filePath = Paths.get("src/resources/static/img/").resolve("user.png").toAbsolutePath();
-
+            filePath = Paths.get("/static/img/").resolve("user.png").toAbsolutePath();
+            log.info("cargando imagen en: " + filePath);
             resource = new UrlResource(filePath.toUri());
             log.error("Error: no se pudo cargar la imagen");
         }
